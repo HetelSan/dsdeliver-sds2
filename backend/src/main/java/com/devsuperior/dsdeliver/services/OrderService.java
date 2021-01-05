@@ -42,4 +42,15 @@ public class OrderService {
 		order = repository.save(order);
 		return new OrderDTO(order);
 	}
+	/*
+	 * Instancia 1 pedido sem ir no banco de dados. Somente em memória.
+	 * O getOne não vai até o banco de dados.
+	 */
+	@Transactional
+	public OrderDTO setDelivered(Long id) {
+		Order order = repository.getOne(id);
+		order.setStatus(OrderStatus.DELIVERED);
+		order = repository.save(order);
+		return new OrderDTO(order);
+	}
 }
