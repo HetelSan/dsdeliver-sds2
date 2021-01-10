@@ -11,3 +11,11 @@ export type OrderLocationData = {
     longitude: number;
     address: string;
 }
+
+type ProductId = {
+    id: number;
+}
+
+export type OrderPayload = {
+    products: ProductId[];
+} & OrderLocationData // o payload herda os atributos do type OrderLocationData. Não precisa declarar novamente
